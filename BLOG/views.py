@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required #vistas basadas en funciones
 from .models import *
 from .forms import *
+from chat.models import User
 
 # Create your views here.
 def obtenerAvatar(request):
@@ -39,3 +40,13 @@ def AgregarAvatar(request):
     else:
         form=AvatarForm()
         return render(request, "chat\profile.html", {"formulario":form, "usuario":request.user, "imagen":obtenerAvatar(request)})
+
+@login_required
+def blog(request):
+    return render (request, "chat/blog.html", {"imagen":obtenerAvatar(request)})
+
+@login_required
+def leerUsuarios(request):
+    usuarios= User.objects.all()
+    contexto= {"usuarios":usuarios}
+    return render(request, "chat/blogLeer.html", contexto)

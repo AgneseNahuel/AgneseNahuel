@@ -16,4 +16,6 @@ urlpatterns = [
     path('renew/', views.get_messages, name='chat-renew'),
     path("agregarAvatar/", AgregarAvatar, name="agregarAvatar"),
     path("aboutMe/", aboutMe, name="aboutMe"),
+    path("blog/", blog, name="blog"),
+    path("leerUsuarios/", leerUsuarios, name="leerUsuarios"),
 ]   
