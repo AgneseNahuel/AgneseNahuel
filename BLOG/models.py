@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils import timezone
 
 # Create your models here.
 
@@ -10,3 +10,11 @@ class Avatar(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.imagen}"
+
+class comentarioM(models.Model):
+    nombre= models.ForeignKey(User, on_delete=models.CASCADE)
+    campo=models.TextField()
+    date_created = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.nombre} - {self.campo} - {self.date_created}"

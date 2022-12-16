@@ -27,10 +27,18 @@
     }
 </style>
 {% endblock %}{% block content %}
-<p>BASE</p>
-<div class="collapse navbar-collapse" id="nav-menu">
-    <a class="nav-link" href="{% url 'leerUsuarios' %}"><i class="fa fa-home"></i> LEER</a>    
-</div> 
+<p>LISTADO</p>
+{% csrf_token %}
+<ul>
+    {% for comentario in object_list %}
+
+    <li>
+        <p>{{ comentario }}</p>
+        <a href="{% url 'Borrar' comentario.id %}">ELIMINAR</a>
+        <a href="{% url 'Editar' comentario.id %}">EDITAR</a>
+    </li>
+</ul>
+    {% endfor %}
 {% endblock %} {% block footer %}
 <script>
     $(function() {

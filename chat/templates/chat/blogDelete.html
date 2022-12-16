@@ -29,8 +29,10 @@
 {% endblock %}{% block content %}
 <p>DELETE</p>
 
-    
-
+    <form method="post">{% csrf_token %}
+        ¿Desea eliminar?
+        <input type="submit" value="SI" />
+    </form>
 
 {% endblock %} {% block footer %}
 <script>

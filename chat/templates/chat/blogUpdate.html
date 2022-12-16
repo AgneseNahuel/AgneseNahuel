@@ -29,7 +29,9 @@
 {% endblock %}{% block content %}
 <p>UPDATE</p>
 
-    
+<form  method="post"> {% csrf_token %}
+    {{ form.as_p }}
+    <p>Clic para :<input type="submit" value="Guardar">           </p>
 
 
 {% endblock %} {% block footer %}

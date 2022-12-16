@@ -2,7 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required #vistas basadas en funciones
 from .models import *
 from .forms import *
-from chat.models import User
+from chat.models import *
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin #vistas basadas en clases
+from django.urls import reverse_lazy
+
 
 # Create your views here.
 def obtenerAvatar(request):
@@ -42,11 +46,34 @@ def AgregarAvatar(request):
         return render(request, "chat\profile.html", {"formulario":form, "usuario":request.user, "imagen":obtenerAvatar(request)})
 
 @login_required
-def blog(request):
-    return render (request, "chat/blog.html", {"imagen":obtenerAvatar(request)})
-
-@login_required
 def leerUsuarios(request):
     usuarios= User.objects.all()
     contexto= {"usuarios":usuarios}
     return render(request, "chat/blogLeer.html", contexto)
+
+"""def deleteComentario(request, id):
+    comentario=comentarioM.objects.get(id=id)
+    comentario.delete()
+    comentario=comentarioM.objects.all()
+    return render(request, "chat/blogList.html", {"comentario":comentario})
+"""
+class formularioComentario(LoginRequiredMixin, CreateView):
+    model = comentarioM
+    success_url = reverse_lazy("Crear")
+    template_name = "chat/blogCrear.html"
+    fields = ["nombre", "campo", "date_created"]
+
+class listComentario(LoginRequiredMixin, ListView):
+    model= comentarioM
+    template_name= "chat/blogList.html"
+
+class deleteComentario(LoginRequiredMixin, DeleteView):
+    model=comentarioM
+    template_name = "chat/blogDelete.html"
+    success_url= reverse_lazy("Lista")
+
+class updateComentario(LoginRequiredMixin, UpdateView):
+    model=comentarioM
+    template_name= "chat/blogUpdate.html"
+    success_url= reverse_lazy("Lista")
+    fields =["campo"]

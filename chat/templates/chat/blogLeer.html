@@ -29,11 +29,6 @@
 {% endblock %}{% block content %}
 <p>LEER</p>
 
-<div class="collapse navbar-collapse" id="nav-menu">
-            <a class="nav-link" href="{% url 'leerUsuarios' %}"><i class="fa fa-home"></i> LEER</a>    
-</div>
-
-
     {% for u in usuarios %}
     <li>{{ u }}</li>
     {% endfor %}
