@@ -14,7 +14,7 @@ def obtenerAvatar(request):
     if len(lista)!=0:
         imagen=lista[0].imagen.url
     else:
-        imagen="BLOG\media\avatares\avatarpordefecto.png"
+        imagen="BLOG/media/avatares/avatarpordefecto.png"
     return imagen
 
 @login_required
@@ -25,8 +25,9 @@ def aboutMe(request):
 def profile(request):
     context = {
         "page":"profile",
+        "imagen":obtenerAvatar(request),
     }
-    return render(request,"chat/profile.html",context, {"imagen":obtenerAvatar(request)})
+    return render(request,"chat/profile.html",context)
 
 @login_required
 def AgregarAvatar(request):
@@ -38,17 +39,17 @@ def AgregarAvatar(request):
                 avatarViejo[0].delete()
             avatar=Avatar(user=request.user, imagen=request.FILES["imagen"])
             avatar.save()
-            return render(request, "chat\profile.html", {"mensaje":"Avatar agregado correctamente", "imagen":obtenerAvatar(request)})
+            return render(request, "chat\profile.html", {"mensaje":"Avatar agregado correctamente"})
         else:
-            return render(request, "chat\profile.html", {"formulario":form, "usuario":request.user, "imagen":obtenerAvatar(request)})
+            return render(request, "chat\profile.html", {"formulario":form, "usuario":request.user})
     else:
         form=AvatarForm()
-        return render(request, "chat\profile.html", {"formulario":form, "usuario":request.user, "imagen":obtenerAvatar(request)})
+        return render(request, "chat\profile.html", {"formulario":form, "usuario":request.user})
 
 @login_required
 def leerUsuarios(request):
     usuarios= User.objects.all()
-    contexto= {"usuarios":usuarios}
+    contexto= {"usuarios":usuarios, "imagen":obtenerAvatar(request)}
     return render(request, "chat/blogLeer.html", contexto)
 
 """def deleteComentario(request, id):
@@ -61,7 +62,7 @@ class formularioComentario(LoginRequiredMixin, CreateView):
     model = comentarioM
     success_url = reverse_lazy("Crear")
     template_name = "chat/blogCrear.html"
-    fields = ["nombre", "campo", "date_created"]
+    fields = ["nombre", "campo", "date_created", "imagen"]
 
 class listComentario(LoginRequiredMixin, ListView):
     model= comentarioM

@@ -4,7 +4,6 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
 from BLOG.views import *
-from django.urls import reverse_lazy
 
 urlpatterns = [
     path('', views.home, name='chat-home'),

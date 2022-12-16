@@ -11,3 +11,4 @@ class AvatarForm(forms.Form):
 class comentarioF(forms.Form):
     campo=forms.TextInput()
     date_created = models.DateTimeField(default=timezone.now)
+    imagen=forms.ImageField(label="imagen")

@@ -26,7 +26,7 @@ def home(request):
         "users":users,
         "chats":chats,
         "chat_id": int(request.GET['u'] if request.method == 'GET' and 'u' in request.GET else 0),
-        "imagen":obtenerAvatar(request)
+        "imagen":obtenerAvatar(request),
     }
     print(request.GET['u'] if request.method == 'GET' and 'u' in request.GET else 0)
     return render(request,"chat/home.html",context)
@@ -42,13 +42,13 @@ def register(request):
         context = {
             "page":"register",
             "form" : form,
-            "imagen":obtenerAvatar(request)
+            "imagen":obtenerAvatar(request),
         }
     else:
         context = {
             "page":"register",
             "form" : UserRegistrationForm(),
-            "imagen":obtenerAvatar(request)
+            
         }
     return render(request,"chat/register.html",context)
 
@@ -56,7 +56,8 @@ def register(request):
 def profile(request):
     context = {
         "page":"profile",
-        "imagen":obtenerAvatar(request)
+        "imagen":obtenerAvatar(request),
+        
     }
     return render(request,"chat/profile.html",context)
 
