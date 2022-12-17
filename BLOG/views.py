@@ -22,6 +22,10 @@ def aboutMe(request):
     return render (request, "chat/about.html", {"imagen":obtenerAvatar(request)})
 
 @login_required
+def leerMas(request):
+    return render (request, "chat/aboutLeermas.html", {"imagen":obtenerAvatar(request)})
+
+@login_required
 def profile(request):
     context = {
         "page":"profile",

@@ -4,6 +4,8 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
 from BLOG.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='chat-home'),
@@ -16,6 +18,7 @@ urlpatterns = [
     path('renew/', views.get_messages, name='chat-renew'),
     path("agregarAvatar/", AgregarAvatar, name="agregarAvatar"),
     path("aboutMe/", aboutMe, name="aboutMe"),
+    path("leerMas", leerMas, name="leerMas"),
     path("leerUsuarios/", leerUsuarios, name="leerUsuarios"),
     path("Crear/", formularioComentario.as_view(), name="Crear"),
     path("List/", listComentario.as_view(), name="Lista"),
@@ -23,3 +26,5 @@ urlpatterns = [
     path("Delete/<pk>", deleteComentario.as_view(), name="Borrar"),
     path("Update/<pk>", updateComentario.as_view(), name="Editar"),
 ]   
+
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

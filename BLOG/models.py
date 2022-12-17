@@ -15,7 +15,7 @@ class comentarioM(models.Model):
     nombre= models.ForeignKey(User, on_delete=models.CASCADE)
     campo=models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
-    imagen =models.ImageField(upload_to="avatares", null=True, blank=True)
+    imagen =models.ImageField(upload_to="imagenBlog", null=True, blank=True)
 
     def __str__(self):
         return f"{self.nombre} - {self.campo} - {self.date_created} - {self.imagen}"

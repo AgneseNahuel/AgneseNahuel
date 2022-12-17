@@ -30,11 +30,12 @@
 <p>CREATE</p>
 
 
-<form action="{% url 'Crear' %}" method="POST">    {% csrf_token %}
+<form action="{% url 'Crear' %}" method="POST" enctype="multipart/form-data">    {% csrf_token %}
 
     <table>
         
         {{ form.as_p }}
+        
     
     </table>
     

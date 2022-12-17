@@ -27,21 +27,18 @@
     }
 </style>
 {% endblock %}{% block content %}
-<p>LISTADO</p>
-{% csrf_token %}
-<ul>
-    {% for comentario in object_list %}
+<p><h1>Unico Participante con mucha ayuda del tutor!</h1> 
+<br><h2>Nahuel Nicolas Agnese</h2></p>
+<br>
+<br>
+<div>
+<p>
+    Este "leer mas" es parte del TP FINAL
+</p>
 
-    <li>
-        <p>{{ comentario }}</p>
-        {% if comentario.imagen %}
-        <img src="{{ comentario.imagen.url }}" style="height: 100px; width: 100px;">
-        {% endif %}
-        <a href="{% url 'Borrar' comentario.id %}">ELIMINAR</a>
-        <a href="{% url 'Editar' comentario.id %}">EDITAR</a>
-    </li>
-</ul>
-    {% endfor %}
+
+
+</div>
 {% endblock %} {% block footer %}
 <script>
     $(function() {
