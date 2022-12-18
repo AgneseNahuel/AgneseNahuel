@@ -29,23 +29,19 @@
 {% endblock %}{% block content %}
 <p>Ver Mas</p>
 {% csrf_token %}
-<ul>
 
-        {% for comentario in object_list %}
-    
-        <li>
-            <h1>{{ comentario.titulo }}</h1>
-            <h2>{{ comentario.subtitulo }}</h2>
-            <p>{{ comentario }}</p>
-            {% if comentario.imagen %}
-            <img src="{{ comentario.imagen.url }}" style="height: 100px; width: 100px;">
-            {% endif %}
-            <a href="{% url 'Borrar' comentario.id %}">ELIMINAR</a>
-            <a href="{% url 'Editar' comentario.id %}">EDITAR</a>
-        </li>
-    </ul>
-        {% endfor %}
-   
+<li>
+    <h1>{{ object.titulo }}</h1>
+    <h2>{{ object.subtitulo }}</h2>
+    <p>{{ object }}</p>
+    {% if object.imagen %}
+    <img src="{{ object.imagen.url }}" style="height: 100px; width: 100px;">
+    {% endif %}
+    <a href="{% url 'Borrar' object.id %}">ELIMINAR</a>
+    <a href="{% url 'Editar' object.id %}">EDITAR</a>
+</li>
+
+
     
 {% endblock %} {% block footer %}
 <script>

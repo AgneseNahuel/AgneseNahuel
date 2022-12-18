@@ -83,10 +83,9 @@ class updateComentario(LoginRequiredMixin, UpdateView):
     success_url= reverse_lazy("Lista")
     fields =["campo"]
 
-class leerMasBlog(LoginRequiredMixin, ListView):
+   
+class leerMasBlog(LoginRequiredMixin, DetailView):
     model= comentarioM
     template_name= "chat/leerMasBlog.html"
-   
-
-
+    
 
