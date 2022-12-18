@@ -66,7 +66,7 @@ class formularioComentario(LoginRequiredMixin, CreateView):
     model = comentarioM
     success_url = reverse_lazy("Crear")
     template_name = "chat/blogCrear.html"
-    fields = ["nombre", "campo", "date_created", "imagen"]
+    fields = ["nombre", "campo", "date_created", "imagen", "titulo", "subtitulo"]
 
 class listComentario(LoginRequiredMixin, ListView):
     model= comentarioM
@@ -82,3 +82,11 @@ class updateComentario(LoginRequiredMixin, UpdateView):
     template_name= "chat/blogUpdate.html"
     success_url= reverse_lazy("Lista")
     fields =["campo"]
+
+class leerMasBlog(LoginRequiredMixin, ListView):
+    model= comentarioM
+    template_name= "chat/leerMasBlog.html"
+   
+
+
+

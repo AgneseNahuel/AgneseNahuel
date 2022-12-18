@@ -22,6 +22,7 @@ urlpatterns = [
     path("leerUsuarios/", leerUsuarios, name="leerUsuarios"),
     path("Crear/", formularioComentario.as_view(), name="Crear"),
     path("List/", listComentario.as_view(), name="Lista"),
+    path("leerMasBlog/<id>", leerMasBlog.as_view(), name="leerMasBlog"),
     #path("Delete/<id>", deleteComentario, name="Borrar"),
     path("Delete/<pk>", deleteComentario.as_view(), name="Borrar"),
     path("Update/<pk>", updateComentario.as_view(), name="Editar"),

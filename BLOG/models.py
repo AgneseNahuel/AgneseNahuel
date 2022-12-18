@@ -14,8 +14,10 @@ class Avatar(models.Model):
 class comentarioM(models.Model):
     nombre= models.ForeignKey(User, on_delete=models.CASCADE)
     campo=models.TextField()
-    date_created = models.DateTimeField(default=timezone.now)
+    date_created = models.DateTimeField(default=timezone.now())
     imagen =models.ImageField(upload_to="imagenBlog", null=True, blank=True)
+    titulo=models.CharField(max_length=50, default="Sin Titulo")
+    subtitulo=models.CharField(max_length=50, default="Sin Subtitulo")
 
     def __str__(self):
-        return f"{self.nombre} - {self.campo} - {self.date_created} - {self.imagen}"
+        return f"{self.nombre} - {self.campo} - {self.date_created}"
