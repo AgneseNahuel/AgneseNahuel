@@ -30,6 +30,7 @@
 <p>UPDATE</p>
 
 <form  method="post"> {% csrf_token %}
+    {{ form.media }}
     {{ form.as_p }}
     <p>Clic para :<input type="submit" value="Guardar">           </p>
 

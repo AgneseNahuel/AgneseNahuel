@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -13,7 +14,7 @@ class Avatar(models.Model):
 
 class comentarioM(models.Model):
     nombre= models.ForeignKey(User, on_delete=models.CASCADE)
-    campo=models.TextField()
+    campo= RichTextField()
     date_created = models.DateTimeField(default=timezone.now())
     imagen =models.ImageField(upload_to="imagenBlog", null=True, blank=True)
     titulo=models.CharField(max_length=50, default="Sin Titulo")

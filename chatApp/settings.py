@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chat.apps.ChatConfig',
     'BLOG',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,14 @@ LOGIN_URL = "chat-login"
 
 MEDIA_URL= '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_URL= '/static/'
+STATIC_ROOT= '/static/'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}

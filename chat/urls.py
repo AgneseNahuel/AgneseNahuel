@@ -6,6 +6,7 @@ from . import views
 from BLOG.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import include
 
 urlpatterns = [
     path('', views.home, name='chat-home'),
@@ -25,6 +26,8 @@ urlpatterns = [
     path("leerMasBlog/<pk>", leerMasBlog.as_view(), name="leerMasBlog"),
     path("Delete/<pk>", deleteComentario.as_view(), name="Borrar"),
     path("Update/<pk>", updateComentario.as_view(), name="Editar"),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]   
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

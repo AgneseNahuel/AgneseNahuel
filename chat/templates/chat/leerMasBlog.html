@@ -33,7 +33,7 @@
 <li>
     <h1>{{ object.titulo }}</h1>
     <h2>{{ object.subtitulo }}</h2>
-    <p>{{ object }}</p>
+    <p>{{ object | safe }}</p>
     {% if object.imagen %}
     <img src="{{ object.imagen.url }}" style="height: 100px; width: 100px;">
     {% endif %}
