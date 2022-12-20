@@ -56,12 +56,7 @@ def leerUsuarios(request):
     contexto= {"usuarios":usuarios, "imagen":obtenerAvatar(request)}
     return render(request, "chat/blogLeer.html", contexto)
 
-"""def deleteComentario(request, id):
-    comentario=comentarioM.objects.get(id=id)
-    comentario.delete()
-    comentario=comentarioM.objects.all()
-    return render(request, "chat/blogList.html", {"comentario":comentario})
-"""
+
 class formularioComentario(LoginRequiredMixin, CreateView):
     model = comentarioM
     success_url = reverse_lazy("Crear")

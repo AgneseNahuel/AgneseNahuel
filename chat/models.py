@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     is_login = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username} Perfil'
 
 class chatMessages(models.Model):
     user_from = models.ForeignKey(User,
