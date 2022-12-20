@@ -28,8 +28,7 @@ def leerMas(request):
 @login_required
 def profile(request):
     context = {
-        "page":"profile",
-        "imagen":obtenerAvatar(request),
+        "page":"profile",   
     }
     return render(request,"chat/profile.html",context)
 

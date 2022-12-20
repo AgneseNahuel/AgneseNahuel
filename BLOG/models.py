@@ -21,4 +21,4 @@ class comentarioM(models.Model):
     subtitulo=models.CharField(max_length=50, default="Sin Subtitulo")
 
     def __str__(self):
-        return f"{self.nombre} - {self.campo} - {self.date_created}"
+        return f"{self.nombre} - {self.campo} - {self.date_created} - {self.imagen} - {self.titulo} - {self.subtitulo}"
